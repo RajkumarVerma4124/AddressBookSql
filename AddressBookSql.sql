@@ -42,4 +42,21 @@ Select * From AddressBook Where City='Mumbai' Or StateName='Maharshtra';
 Select Count(*) As Count,StateName,City From AddressBook Group By StateName,City;
 
 --------------------------------------Retrive Sorted Persons Records By City(UC8)------------------------------------------------
-Select * From AddressBook Where City = 'Mumbai' Order By FirstName;				
+Select * From AddressBook Where City = 'Mumbai' Order By FirstName;		
+
+-----------------------------------------------Add AddressBookName And Type Column(UC9)----------------------------------------------------------
+Alter Table AddressBook Add AddressBookName varchar(50), AddressBookType varchar(50);
+
+------------------Inserting Data Into The AddressBook Table For Freinds And Profession
+Insert Into AddressBook(FirstName,LastName,Address,City,StateName,ZipCode,PhoneNum,EmailId) 
+					Values('Amit', 'Pawar', 'Govandi', 'Mumbai', 'Maharashtra', 789123, 9823434561, 'abc012@gmail.com'),
+						('Appurva', 'Rasal', 'Vashi', 'NaviMumbai', 'Maharashtra', 741258, 7419632580, 'abc320@gmail.com'),	
+						('Vaibhav', 'Patil', 'Ka;yan', 'Mumbai', 'Maharashtra', 965874, 7412589631, 'abc475@gmail.com'),	
+						('Mansi', 'Verma', 'Vashi', 'NaviMumbai', 'Maharashtra', 789456, 9874561230, 'abc456@gmail.com'),	
+						('Yash', 'Verma', 'Ghansoli', 'NaviMumbai', 'Maharashtra', 985263, 7456981230, 'abc786@gmail.com');
+------------------Updating The DataBase With New Coulmn Values
+Update AddressBook Set AddressBookName='FreindsAddressBook',AddressBookType='Freinds' Where FirstName ='Ajay' Or FirstName='Omkar' Or FirstName = 'Aman';
+Update AddressBook Set AddressBookName='FamilyAddressBook',AddressBookType='Family' Where FirstName ='Raj' Or FirstName='Mansi' Or FirstName = 'Yash';
+Update AddressBook Set AddressBookName='ProfesionAddressBook',AddressBookType='Profession' Where FirstName ='Appurva' Or FirstName='Vaibhav' Or FirstName = 'Amit';
+Select * From AddressBook Order By FirstName;	
+
