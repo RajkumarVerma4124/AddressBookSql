@@ -44,7 +44,7 @@ Select Count(*) As Count,StateName,City From AddressBook Group By StateName,City
 --------------------------------------Retrive Sorted Persons Records By City(UC8)------------------------------------------------
 Select * From AddressBook Where City = 'Mumbai' Order By FirstName;		
 
------------------------------------------------Add AddressBookName And Type Column(UC9)----------------------------------------------------------
+----------------------------------------Add AddressBookName And Type Column(UC9)--------------------------------------------------
 Alter Table AddressBook Add AddressBookName varchar(50), AddressBookType varchar(50);
 
 ------------------Inserting Data Into The AddressBook Table For Freinds And Profession
@@ -58,5 +58,9 @@ Insert Into AddressBook(FirstName,LastName,Address,City,StateName,ZipCode,PhoneN
 Update AddressBook Set AddressBookName='FreindsAddressBook',AddressBookType='Freinds' Where FirstName ='Ajay' Or FirstName='Omkar' Or FirstName = 'Aman';
 Update AddressBook Set AddressBookName='FamilyAddressBook',AddressBookType='Family' Where FirstName ='Raj' Or FirstName='Mansi' Or FirstName = 'Yash';
 Update AddressBook Set AddressBookName='ProfesionAddressBook',AddressBookType='Profession' Where FirstName ='Appurva' Or FirstName='Vaibhav' Or FirstName = 'Amit';
-Select * From AddressBook Order By FirstName;	
+Select * From AddressBook Order By FirstName;
+
+-----------------------------Ability To Get Number Of Contact Persons i.e. Count By Type And Name(UC9)-----------------------------
+Select Count(*) As CountABType,AddressBookType From AddressBook Group By AddressBookType;
+Select Count(*) As CountABNames,AddressBookName  From AddressBook Group By AddressBookName;
 
