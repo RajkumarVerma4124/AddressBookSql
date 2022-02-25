@@ -68,3 +68,61 @@ Select Count(*) As CountABNames,AddressBookName  From AddressBook Group By Addre
 Insert into AddressBook values ('Ajay', 'Matkar', 'Chembur', 'Mumbai', 'Maharashtra', 965874, 7412589631, 'abc789@gmail.com','FamilyAddressBook','Family');
 Select * From AddressBook Order By FirstName;
 
+--------------------------------------------Creating Tables Using ER Diagram(UC12)--------------------------------------------------
+---------------Creating Address_Book Table
+Create Table Address_Book(
+	AddressBookId Int Identity(1,1) Primary Key,
+	AddressBookName varchar(50)
+);
+
+---------------Creating Persons_Details Table
+Create Table Persons_Details(
+	PersonId Int Identity(1,1) Primary Key,
+	AddressBookId Int Foreign Key References Address_Book(AddressBookId),
+	FirstName varchar(50),
+	LastName varchar(50),
+	Address varchar(255),
+	City varchar(50),
+	StateName varchar(50),
+	ZipCode int,
+	PhoneNum bigint,
+	EmailId varchar(50)
+);
+
+---------------Creating Person_Types Table
+CREATE TABLE Person_Types(
+	PersonTypeId Int Identity(1,1) Primary Key,
+	PersonType varchar(50),
+);
+
+---------------Creating Persons_Details_Type Table
+CREATE TABLE Persons_Details_Type(
+	PersonId Int Foreign Key References Persons_Details(PersonId),
+	PersonTypeId Int Foreign Key References Person_Types(PersonTypeId)
+);
+
+--------------------------------------------Inserting Values Into The New Table Structure------------------------------------------------------
+
+---------------Inserting Values Into AddressBook Table
+Insert Into Address_Book Values ('Home'),('Office'),('College');
+Select * From Address_Book;
+
+---------------Inserting Values Into PersonTypes Table
+Insert Into Person_Types Values ('Family'),('Profession'),('Freinds');
+Select * From Person_Types;
+
+---------------Inserting Values Into PersonsDetails Table
+Insert Into Persons_Details Values(1,'Raj', 'Verma', 'Ghansoli', 'NaviMumbai', 'Maharashtra', 456123, 9517534561, 'abc123@gmail.com'),
+						(3,'Ajay', 'Matkar', 'Chembur', 'Mumbai', 'Maharashtra', 965874, 7412589631, 'abc789@gmail.com'),	
+						(3,'Omkar', 'Bhatt', 'Andheri', 'Mumbai', 'Maharashtra', 412563, 9852364170, 'abc852@gmail.com'),	
+						(3,'Aman', 'Nikam', 'Borivali', 'Mumbai', 'Maharashtra', 456123, 9852741630, 'abc741@gmail.com'),
+						(2,'Amit', 'Pawar', 'Govandi', 'Mumbai', 'Maharashtra', 789123, 9823434561, 'abc012@gmail.com'),
+						(2,'Appurva', 'Rasal', 'Vashi', 'NaviMumbai', 'Maharashtra', 741258, 7419632580, 'abc320@gmail.com'),	
+						(2,'Vaibhav', 'Patil', 'Ka;yan', 'Mumbai', 'Maharashtra', 965874, 7412589631, 'abc475@gmail.com'),	
+						(1,'Mansi', 'Verma', 'Vashi', 'NaviMumbai', 'Maharashtra', 789456, 9874561230, 'abc456@gmail.com'),	
+						(1,'Yash', 'Verma', 'Ghansoli', 'NaviMumbai', 'Maharashtra', 985263, 7456981230, 'abc786@gmail.com');
+Select * From Persons_Details;
+
+---------------Inserting Values Into PersonsDetailsType Table
+Insert Into Persons_Details_Type VALUES (1,1),(2,3),(3,3),(4,3),(5,2),(6,2),(7,2),(8,1),(9,1);
+SELECT * FROM Persons_Details_Type;
