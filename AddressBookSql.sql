@@ -34,4 +34,8 @@ Select * From AddressBook;
 ---------------------------------------Delete Existing Contact From Table(UC5)-----------------------------------------------
 Delete From AddressBook Where FirstName='Mansi' And LastName = 'Verma';
 Select * From AddressBook;
+
+--------------------------------Retrieve Person Record From Table By City Or State(UC6)---------------------------------------
+Select * From AddressBook Where City='Mumbai' Or StateName='Maharshtra';
+
 					
