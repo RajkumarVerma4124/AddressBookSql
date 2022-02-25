@@ -23,4 +23,11 @@ Insert Into AddressBook Values('Raj', 'Verma', 'Ghansoli', 'NaviMumbai', 'Mahara
 						('Omkar', 'Bhatt', 'Andheri', 'Mumbai', 'Maharashtra', 412563, 9852364170, 'abc852@gmail.com'),	
 						('Aman', 'Nikam', 'Borivali', 'Mumbai', 'Maharashtra', 456123, 9852741630, 'abc741@gmail.com');
 Select * From AddressBook;
+
+---------------------------------------Edit Existing AddressBook Table Using Update(UC4)-----------------------------------------------
+Update AddressBook Set EmailId='mansi@yahoo.com' Where FirstName='Mansi';
+Update AddressBook Set Address='Sec-40', City = 'Noida', StateName = 'Delhi' Where FirstName='Raj';
+Update AddressBook Set Phonenum=7415986320 Where FirstName='Ajay';
+Update AddressBook Set LastName='Kondvilkar' Where FirstName='Omkar';
+Select * From AddressBook;
 							
