@@ -30,4 +30,8 @@ Update AddressBook Set Address='Sec-40', City = 'Noida', StateName = 'Delhi' Whe
 Update AddressBook Set Phonenum=7415986320 Where FirstName='Ajay';
 Update AddressBook Set LastName='Kondvilkar' Where FirstName='Omkar';
 Select * From AddressBook;
-							
+
+---------------------------------------Delete Existing Contact From Table(UC5)-----------------------------------------------
+Delete From AddressBook Where FirstName='Mansi' And LastName = 'Verma';
+Select * From AddressBook;
+					
