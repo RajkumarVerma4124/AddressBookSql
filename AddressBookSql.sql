@@ -64,3 +64,7 @@ Select * From AddressBook Order By FirstName;
 Select Count(*) As CountABType,AddressBookType From AddressBook Group By AddressBookType;
 Select Count(*) As CountABNames,AddressBookName  From AddressBook Group By AddressBookName;
 
+-----------------------------Adding Same Person In Different AddressBookType(UC11)-----------------------------
+Insert into AddressBook values ('Ajay', 'Matkar', 'Chembur', 'Mumbai', 'Maharashtra', 965874, 7412589631, 'abc789@gmail.com','FamilyAddressBook','Family');
+Select * From AddressBook Order By FirstName;
+
