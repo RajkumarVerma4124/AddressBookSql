@@ -140,21 +140,21 @@ INNER JOIN Person_Types AS pt ON pt.PersonTypeId = ptm.PersonTypeId;
 ---------------Count Based On City And State(UC7)
 Select Count(*) As Count,StateName,City from Persons_Details Group By StateName,City;
 
----------------Sorted AddressBokk Based On First Name(UC8)
+---------------Sorted AddressBook Based On First Name(UC8)
 SELECT ab.AddressBookId,ab.AddressBookName,pd.PersonId,pd.FirstName,pd.LastName,pd.Address,pd.City,pd.StateName,pd.ZipCode,
 pd.PhoneNum,pd.EmailId,pt.PersonType,pt.PersonTypeId FROM
 Address_Book AS ab 
-INNER JOIN Persons_Details AS pd ON ab.AddressBookId = pd.AddressBookId
+INNER JOIN Persons_Details AS pd ON ab.AddressBookId = pd.AddressBookId And City = 'Mumbai'
 INNER JOIN Persons_Details_Type as ptm On ptm.PersonId = pd.PersonId
 INNER JOIN Person_Types AS pt ON pt.PersonTypeId = ptm.PersonTypeId Order By FirstName;
 
 ---------------Retreive Number Of Persons Records Based On Person Types(UC10)
-Select Count(pdt.PersonTypeId) As RelationType,Pt.PersonType From 
+Select Count(pdt.PersonTypeId) As PersonCount,Pt.PersonType From 
 Persons_Details_Type As pdt 
 INNER JOIN Person_Types AS pt ON pt.PersonTypeId = pdt.PersonTypeId
 INNER JOIN Persons_Details AS pd ON pd.PersonId = pdt.PersonId Group By pdt.PersonTypeId,pt.PersonType;
 
 ---------------Retreive Number Of Persons Records Based On AddressBook Names(UC10)
-Select Count(ab.AddressBookId) As AddressBookName,ab.AddressBookName From 
+Select Count(ab.AddressBookId) As AddressBookCount,ab.AddressBookName From 
 Address_Book As ab 
 INNER JOIN Persons_Details AS pd ON pd.AddressBookId = ab.AddressBookId Group By ab.AddressBookName,pd.AddressBookId;
